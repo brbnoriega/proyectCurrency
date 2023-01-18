@@ -1,19 +1,30 @@
 import { useState, useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import { TbExchange } from "react-icons/tb";
 import { BsTrash } from "react-icons/bs";
+import {getCurrency} from "../src/actions/index.js";
 import MaskedInput from "react-text-mask";
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import '../src/CurrencyChange.css';
 
-const CurrencyChange = ({ }) => {
-  const tipoDeCambio = 3.8263;
-  const cambioVenta = 3.8463;
-  const [soles, setSoles] = useState(0.0);
-  const [usd, setUsd] = useState(0.0);
+const CurrencyChange = () => {
+  const dispatch = useDispatch()
+
+  const currencyData = useSelector((state)=> state.currency)
+  console.log(currencyData.blue, "hi ")
+
+
+  const [peso, setPeso] = useState(0.0);
+  const [blue, setBlue] = useState(0.0);
+
   const [currencyBox, setCurrency] = useState(true);
 
   useEffect(() => {
-  }, []);
+    dispatch(getCurrency())
+  }, [dispatch]);
+
+
+
   const maskText = createNumberMask({
     prefix: "",
     suffix: "",
@@ -27,32 +38,32 @@ const CurrencyChange = ({ }) => {
     allowLeadingZeroes: false,
   });
 
-  function handleConvertSoles(e) {
+  function handleConvertPeso(e) {
     e.preventDefault();
     e.target.value.split(",").join("");
-    setUsd(e.target.value.split(",").join("") / tipoDeCambio);
-    setSoles(e.target.value.split(",").join(""));
-    console.log(typeof soles);
+    setBlue(e.target.value.split(",").join("") / currencyData.blue.value_sell);
+    setPeso(e.target.value.split(",").join(""));
+    console.log(typeof peso);
   }
 
-  function handleConvertUsd(e) {
+  function handleConvertBlue(e) {
     e.preventDefault();
     e.target.value.split(",").join("");
-    setSoles(e.target.value.split(",").join("") * tipoDeCambio);
-    setUsd(e.target.value.split(",").join(""));
+    setPeso(e.target.value.split(",").join("") * currencyData.blue.value_sell);
+    setBlue(e.target.value.split(",").join(""));
   }
 
   function handleOption(e) {
     // COL IZQ
     if (e.target.name === "left") {
       console.log("primer if izq," + e.target.name);
-      if (e.target.value === "usd") {
+      if (e.target.value === "blue") {
         setCurrency(false);
       } else {
         setCurrency(true);
       }
     } else {
-      if (e.target.value === "usd") {
+      if (e.target.value === "blue") {
         setCurrency(true);
       } else {
         setCurrency(false);
@@ -62,8 +73,8 @@ const CurrencyChange = ({ }) => {
 
  
   function handleReset() {
-    setSoles(0);
-    setUsd(0);
+    setPeso(0);
+    setBlue(0);
   }
   return (
     <div className="currency-container">    
@@ -75,13 +86,13 @@ const CurrencyChange = ({ }) => {
             {" "}
             <span>
               Tipo de cambio <strong>compra</strong> es:{" "}
-              {Number.parseFloat(tipoDeCambio).toFixed(2)}
+              {currencyData.blue ? currencyData.blue.value_buy : ""}
             </span>
           </div>
           <div>
             <span>
               Tipo de cambio <strong>venta</strong> es:{" "}
-              {Number.parseFloat(cambioVenta).toFixed(2)}
+              {currencyData.blue ? currencyData.blue.value_sell : ""}
             </span>
           </div>
         </div>
@@ -91,30 +102,30 @@ const CurrencyChange = ({ }) => {
             <div className="currency-form currency-from">
               <MaskedInput
                 mask={maskText}
-                value={soles === 0 ? "" : soles}
-                onChange={(e) => handleConvertSoles(e)}
-                placeholder="S/ 0"
+                value={peso === 0 ? "" : peso}
+                onChange={(e) => handleConvertPeso(e)}
+                placeholder="$ 0"
                 className="maskStyle"
               />
               <br />
-              <select name="left" value="soles" onChange={handleOption}>
-                <option value="soles">Soles</option>
-                <option value="usd">Dolares</option>
+              <select name="left" value="peso" onChange={handleOption}>
+                <option value="peso">Pesos</option>
+                <option value="blue">Blue</option>
               </select>
             </div>
           ) : (
             <div className="currency-form currency-to">
               <MaskedInput
                 mask={maskText}
-                value={usd === 0 ? "" : usd}
-                onChange={(e) => handleConvertUsd(e)}
+                value={blue === 0 ? "" : blue}
+                onChange={(e) => handleConvertBlue(e)}
                 placeholder="$ 0"
                 className="maskStyle"
               />
               <br />
-              <select name="left" value="usd" onChange={handleOption}>
-                <option value="usd">Dolares</option>
-                <option value="soles">Soles</option>
+              <select name="left" value="blue" onChange={handleOption}>
+                <option value="blue">Blue</option>
+                <option value="peso">Pesos</option>
               </select>
             </div>
           )}
@@ -135,30 +146,30 @@ const CurrencyChange = ({ }) => {
             <div className="currency-form currency-from">
               <MaskedInput
                 mask={maskText}
-                value={usd === 0 ? "" : usd}
-                onChange={(e) => handleConvertUsd(e)}
+                value={blue === 0 ? "" : blue}
+                onChange={(e) => handleConvertBlue(e)}
                 placeholder="$ 0"
                 className="maskStyle"
               />
               <br />
-              <select name="right" value="usd" onChange={handleOption}>
-                <option value="usd">Dolares</option>
-                <option value="soles">Soles</option>
+              <select name="right" value="blue" onChange={handleOption}>
+                <option value="blue">Blue</option>
+                <option value="peso">Pesos</option>
               </select>
             </div>
           ) : (
             <div className="currency-form currency-to">
               <MaskedInput
                 mask={maskText}
-                value={soles === 0 ? "" : soles}
-                onChange={(e) => handleConvertSoles(e)}
+                value={peso === 0 ? "" : peso}
+                onChange={(e) => handleConvertPeso(e)}
                 placeholder="S/ 0"
                 className="maskStyle"
               />
               <br />
-              <select name="right" value="soles" onChange={handleOption}>
-                <option value="soles">Soles</option>
-                <option value="usd">Dolares</option>
+              <select name="right" value="peso" onChange={handleOption}>
+                <option value="peso">Pesos</option>
+                <option value="blue">Blue</option>
               </select>
             </div>
           )}
@@ -171,11 +182,11 @@ const CurrencyChange = ({ }) => {
                 {" "}
                 <strong>Envio </strong>
                 <span>
-                  S/.{" "}
-                  {soles === undefined || soles === isNaN || soles === ""
+                  $.{" "}
+                  {peso === undefined || peso === isNaN || peso === ""
                     ? Number.parseFloat(0.0).toFixed(2)
-                    : Number.parseFloat(soles).toFixed(2)}{" "}
-                  soles{" "}
+                    : Number.parseFloat(peso).toFixed(2)}{" "}
+                  peso{" "}
                 </span>
               </p>
               <p>
@@ -184,9 +195,9 @@ const CurrencyChange = ({ }) => {
                 <span>
                   {" "}
                   $
-                  {usd === undefined || usd === isNaN || usd === ""
+                  {blue === undefined || blue === isNaN || blue === ""
                     ? Number.parseFloat(0.0).toFixed(2)
-                    : Number.parseFloat(usd).toFixed(2)}{" "}
+                    : Number.parseFloat(blue).toFixed(2)}{" "}
                   dolares
                 </span>
               </p>
@@ -197,10 +208,10 @@ const CurrencyChange = ({ }) => {
                 {" "}
                 <strong>Envío </strong>
                 <span>
-                  S/.{" "}
-                  {usd === undefined || usd === isNaN || usd === ""
+                  $.{" "}
+                  {blue === undefined || blue === isNaN || blue === ""
                     ? 0
-                    : Number.parseFloat(usd).toFixed(2)}{" "}
+                    : Number.parseFloat(blue).toFixed(2)}{" "}
                   dolares{" "}
                 </span>
               </p>
@@ -210,10 +221,10 @@ const CurrencyChange = ({ }) => {
                 <span>
                   {" "}
                   $
-                  {soles === undefined || soles === isNaN || soles === ""
+                  {peso === undefined || peso === isNaN || peso === ""
                     ? 0
-                    : Number.parseFloat(soles).toFixed(2)}{" "}
-                  soles
+                    : Number.parseFloat(peso).toFixed(2)}{" "}
+                  peso
                 </span>
               </p>{" "}
             </div>
