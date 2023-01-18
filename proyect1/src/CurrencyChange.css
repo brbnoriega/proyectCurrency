@@ -1,0 +1,160 @@
+.currency-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  gap: 20px;
+}
+  .currency-converter {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+ 
+    float: none;
+    text-align: center;
+
+    border-radius: 10px;
+
+    width: 60%;
+    height: auto;
+    padding: 0px 20px 10px 20px;
+    border-radius: 10px;
+    padding-top: 2%;
+    flex-direction: column;
+  }
+
+  .currency-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0% 4% 4% 4%;
+    gap: 20px;
+  }
+  .currency-converter .currency-form {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0px 10px;
+    background: #fff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .currency-converter .currency-form input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    padding: 10px 0px 0px;
+  }
+
+  .currency-converter .currency-form select {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 0px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .col {
+    justify-content: space-between;
+    gap: 20px;
+    display: flex;
+  }
+
+  .maskStyle {
+    text-align: right;
+  }
+  .currency-transfer {
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 0px rgba(231, 226, 226, 0.75);
+    margin-bottom: 2%;
+  }
+
+  .table-transfer {
+    width: 100%;
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .styleButton {
+    text-decoration: none;
+    color: green;
+  }
+  .styleTitle {
+    align-self: flex-start;
+    margin-left: 8%;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgb(35 35 35 / 20%);
+  }
+
+  .iconStyle1 {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border: none;
+
+    display: inline-block;
+  }
+  .iconStyle2 {
+    width: 30px;
+    height: 30px;
+    background-color: #e0ece3;
+    border-radius: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border: none;
+    color: green;
+  }
+
+  .iconStyle3 {
+    width: 30px;
+    height: 30px;
+    background-color: #e0ece3;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border: none;
+    color: green;
+  }
+
+
+@media only screen and (max-width: 600px) {
+  .currency-box {
+    padding: 85px;
+    padding-top: 95px;
+  }
+
+  .currency-container {
+    padding-top: 15vh;
+    margin-bottom: -15%;
+    margin-top: 5px;
+    font-size: 90%;
+    width: 100%;
+     }
+    .styleTitle {
+      align-self: center;
+      margin: 0%;
+    }
+ 
+  .col {
+    flex-direction: column;
+  }
+  .currency-converter {
+    width: 100%;
+  }
+
+}
