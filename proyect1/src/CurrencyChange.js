@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { TbExchange } from "react-icons/tb";
 import { BsTrash } from "react-icons/bs";
-import {getCurrency} from "../src/actions/index.js";
+import { getCurrency } from "../src/actions/index.js";
 import MaskedInput from "react-text-mask";
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
-import '../src/CurrencyChange.css';
+import "../src/CurrencyChange.css";
 
 const CurrencyChange = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const currencyData = useSelector((state)=> state.currency)
-  console.log(currencyData.blue, "hi ")
-
+  const currencyData = useSelector((state) => state.currency);
+  console.log(currencyData.blue, "hi ");
 
   const [peso, setPeso] = useState(0.0);
   const [blue, setBlue] = useState(0.0);
@@ -20,10 +19,8 @@ const CurrencyChange = () => {
   const [currencyBox, setCurrency] = useState(true);
 
   useEffect(() => {
-    dispatch(getCurrency())
+    dispatch(getCurrency());
   }, [dispatch]);
-
-
 
   const maskText = createNumberMask({
     prefix: "",
@@ -71,16 +68,14 @@ const CurrencyChange = () => {
     }
   }
 
- 
   function handleReset() {
     setPeso(0);
     setBlue(0);
   }
   return (
-    <div className="currency-container">    
-    <h4 className="styleTitle">Operación de cambio</h4>
+    <div className="currency-container">
+      <h4 className="styleTitle">Operación de cambio</h4>
       <div className="currency-converter">
-    
         <div className="col">
           <div>
             {" "}
@@ -230,12 +225,9 @@ const CurrencyChange = () => {
             </div>
           )}
         </div>
-
-    
       </div>
     </div>
   );
 };
 
 export default CurrencyChange;
-
