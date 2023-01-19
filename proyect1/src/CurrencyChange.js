@@ -13,7 +13,7 @@ const CurrencyChange = () => {
   const currencyData = useSelector((state) => state.currency);
   const listData = useSelector((state) => state.listCountrys.currencies);
 
-  //  console.log( Object.keys(listData).map(m=>m))
+
 
   const [peso, setPeso] = useState(0.0);
   const [blue, setBlue] = useState(0.0);
@@ -78,18 +78,18 @@ const CurrencyChange = () => {
     setBlue(0);
   }
   return (
-    <section class="telephone">
-      <div class="telephone__content">
-        <article class="telephone__top">
-          <div class="telephone__user">
-            <div class="telephone__info">
-              <h3 class="telephone__name">Barbara Noriega</h3>
-              <p class="telephone__status">Currency Converter App</p>
+    <section className="telephone">
+      <div className="telephone__content">
+        <article className="telephone__top">
+          <div className="telephone__user">
+            <div className="telephone__info">
+              <h3 className="telephone__name">Barbara Noriega</h3>
+              <p className="telephone__status">Currency Converter App</p>
             </div>
           </div>
         </article>
 
-        <article class="telephone__main">
+        <article className="telephone__main">
           <div className="currency-container">
             <h4 className="styleTitle">Converter Calculator</h4>
             <div className="currency-converter">
