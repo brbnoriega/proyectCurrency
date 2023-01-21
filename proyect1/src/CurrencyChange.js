@@ -7,24 +7,16 @@ import {
   getListCountrys,
   getConvert,
 } from "../src/actions/index.js";
-// import MaskedInput from "react-text-mask";
-// import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import "../src/CurrencyChange.css";
 
 const CurrencyChange = () => {
   const dispatch = useDispatch();
-
   const currencyData = useSelector((state) => state.currency);
   const listData = useSelector((state) => state.listCountrys.currencies);
   const fx = useSelector((state) => state.convertion);
-
-  const [coin1, setCoin1] = useState(0.0);
-  const [coin2, setCoin2] = useState(0.0);
   const [currencyBox, setCurrency] = useState(true);
   const [amount, setAmount] = useState(1);
-
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
-
   const [curr1, setCurr1] = useState("EUR");
   const [curr2, setCurr2] = useState("USD");
 
@@ -36,8 +28,6 @@ const CurrencyChange = () => {
     toAmount = amount;
     fromAmount = Number.parseFloat(amount / fx).toFixed(2);
   }
-
-
 
   useEffect(() => {
     dispatch(getCurrency());
@@ -51,93 +41,41 @@ const CurrencyChange = () => {
     dispatch(getConvert(curr1, curr2));
   }, [curr1, curr2]);
 
-  // const maskText = createNumberMask({
-  //   prefix: "",
-  //   suffix: "",
-  //   includeThousandsSeparator: true,
-  //   thousandsSeparatorSymbol: ",",
-  //   allowDecimal: true,
-  //   decimalSymbol: ".",
-  //   decimalLimit: 3, // how many digits allowed after the decimal
-  //   integerLimit: 7, // limit length of integer numbers
-  //   allowNegative: false,
-  //   allowLeadingZeroes: false,
-  // });
-
-  // function handleConvertCoin1(e) {
-  //   e.preventDefault();
-  //   e.target.value.split(",").join("");
-  //   setCoin2(e.target.value.split(",").join("") / fx);
-  //   setCoin1(e.target.value.split(",").join(""));
-  // }
-
-  // function handleConvertCoin2(e) {
-  //   e.preventDefault();
-  //   e.target.value.split(",").join("");
-  //   setCoin1(e.target.value.split(",").join("") / fx);
-  //   setCoin2(e.target.value.split(",").join(""));
-  // }
-
-  // function handleOption(e) {
-  //   // COL IZQ
-  //   if (e.target.name === "left") {
-  //     console.log("primer if izq," + e.target.name);
-  //     if (e.target.value === "coin2") {
-  //       setCurrency(false);
-  //     } else {
-  //       setCurrency(true);
-  //     }
-  //   } else {
-  //     if (e.target.value === "coin2") {
-  //       setCurrency(true);
-  //     } else {
-  //       setCurrency(false);
-  //     }
-  //   }
-  // }
-
-  function handleSwitch(){
-
+  function handleSwitch() {
     let keepCurr2 = curr2;
     let keepCurr1 = curr1;
     setCurr1(keepCurr2);
-    setCurr2(keepCurr1)
+    setCurr2(keepCurr1);
   }
 
   function handelSelect1(e) {
     e.preventDefault();
     setCurr1(e.target.value);
-    // dispatch(getConvert(e.target.value, curr2));
 
-    //  setCoin1(coin2 / fx)
-    // console.log(coin2 / fx, "soy la div");
-    // console.log(fx, " soy fx");
     setAmountInFromCurrency(false);
   }
 
   function handelSelect2(e) {
     e.preventDefault();
     setCurr2(e.target.value);
-    // dispatch(getConvert(e.target.value, curr1));
-    // console.log(fx);
 
     setAmountInFromCurrency(true);
   }
 
   function handleChangeFrom(e) {
     e.preventDefault();
-    setAmount(e.target.value)
+    setAmount(e.target.value);
     setAmountInFromCurrency(true);
   }
 
-  function handleChangeTo(e){
+  function handleChangeTo(e) {
     e.preventDefault();
-    setAmount(e.target.value)
+    setAmount(e.target.value);
     setAmountInFromCurrency(false);
   }
 
   function handleReset() {
-    setAmount(0); 
+    setAmount(0);
   }
   return (
     <section className="telephone">
@@ -202,10 +140,7 @@ const CurrencyChange = () => {
                   </div>
                 )}
                 <div className="iconStyle1">
-                  <button
-                    className="iconStyle3"
-                    onClick={handleSwitch}
-                  >
+                  <button className="iconStyle3" onClick={handleSwitch}>
                     <TbExchange />
                   </button>{" "}
                   <br />
