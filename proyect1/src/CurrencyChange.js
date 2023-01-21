@@ -129,8 +129,7 @@ const CurrencyChange = () => {
   }
 
   function handleReset() {
-    setCoin1(0);
-    setCoin2(0);
+    setAmount(0); 
   }
   return (
     <section className="telephone">
