@@ -89,16 +89,11 @@ const CurrencyChange = () => {
           </div>
         </article>
 
-        <article className="telephone__main">
+        <div className="main">
           <div className="currency-container">
             <h4 className="styleTitle">Converter Calculator</h4>
+            <h4 className="col">Exchange rate = {fx}</h4>
             <div className="currency-converter">
-              <div className="col">
-                <div>
-                  <h4>Exchange rate = {fx}</h4>
-                </div>
-              </div>
-
               <div className="currency-box">
                 {currencyBox ? (
                   <div className="currency-form currency-from">
@@ -142,8 +137,7 @@ const CurrencyChange = () => {
                 <div className="iconStyle1">
                   <button className="iconStyle3" onClick={handleSwitch}>
                     <TbExchange />
-                  </button>{" "}
-                  <br />
+                  </button>
                   <button className="iconStyle2" onClick={handleReset}>
                     <BsTrash />
                   </button>
@@ -191,7 +185,7 @@ const CurrencyChange = () => {
               </div>
             </div>
           </div>
-        </article>
+        </div>
       </div>
     </section>
   );
