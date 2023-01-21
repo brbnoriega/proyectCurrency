@@ -191,22 +191,11 @@
 
 body{
   font-family: 'Rubik', sans-serif;
-  background-image: linear-gradient(
-    to right top,
-    #845ec2,
-    #5953a3,
-    #364681,
-    #1e365d,
-    #13253a,
-    #1d293c,
-    #252e3e,
-    #2c3240,
-    #4e4e68,
-    #796a90,
-    #ad86b4,
-    #e7a1d2
-  );
-  background-attachment: fixed;
+background-image: url('../src/background.jpg');
+
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;  
 }
 
 
