@@ -78,13 +78,15 @@ const CurrencyChange = () => {
     setAmount(0);
   }
   return (
-    <section className="telephone">
-      <div className="telephone__content">
-        <article className="telephone__top">
-          <div className="telephone__user">
-            <div className="telephone__info">
-              <h3 className="telephone__name">Barbara Noriega</h3>
-              <p className="telephone__status">Currency Converter App</p>
+    <section>
+      <div>
+        <article>
+          <div className="styleMe">
+            <div>
+              <h3>
+                <a href="https://www.noriegabarbara.com/" target="_blank">Barbara Noriega</a>
+              </h3>
+              <p>Currency Converter App</p>
             </div>
           </div>
         </article>
@@ -104,7 +106,12 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="left" onChange={handelSelect1} value={curr1}>
+                    <select
+                      name="left"
+                      onChange={handelSelect1}
+                      value={curr1}
+                      className="selectStyle"
+                    >
                       {listData
                         ? Object.keys(listData)?.map((m) => (
                             <option key={m} value={m}>
@@ -123,7 +130,12 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="left" onChange={handelSelect1} value={curr1}>
+                    <select
+                      name="left"
+                      onChange={handelSelect1}
+                      value={curr1}
+                      className="selectStyle"
+                    >
                       {listData
                         ? Object.keys(listData)?.map((m) => (
                             <option key={m} value={m}>
@@ -152,7 +164,12 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="right" onChange={handelSelect2} value={curr2}>
+                    <select
+                      name="right"
+                      onChange={handelSelect2}
+                      value={curr2}
+                      className="selectStyle"
+                    >
                       {listData
                         ? Object.keys(listData).map((m) => (
                             <option key={m} value={m}>
@@ -171,7 +188,12 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="right" onChange={handelSelect2} value={curr2}>
+                    <select
+                      name="right"
+                      onChange={handelSelect2}
+                      value={curr2}
+                      className="selectStyle"
+                    >
                       {listData
                         ? Object.keys(listData).map((m) => (
                             <option key={m} value={m}>

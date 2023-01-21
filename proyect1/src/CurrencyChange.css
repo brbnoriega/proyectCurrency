@@ -16,7 +16,7 @@ body {
   background-position: center center;
 }
 
-.telephone__user {
+.styleMe{
   width: 90%;
   margin: 0 auto;
   margin-top: 15px;
@@ -24,14 +24,17 @@ body {
   height: 100%;
   align-items: center;
   color: var(--White);
+  
 }
-
+a {
+  text-decoration: none;
+  color: var(--White);
+}
 .main {
   width: 90%;
   height: 100%;
   margin: 0 auto;
   padding: 2em 0;
-
   display: grid;
   gap: 1em;
   grid-auto-rows: max-content;
@@ -145,7 +148,6 @@ body {
   height: 30px;
   background-color: #e0ece3;
   border-radius: 10px;
-
   border: none;
   color: #845ec2;
 }
@@ -161,13 +163,25 @@ body {
   border: none;
   color: #845ec2;
 }
+.selectStyle{
+  color: #845ec2;
+    }
 
+    input{
+      color: #595a5a;
+    }
 @media (max-width: 700px) {
   body {
-    background-image: url("../src/background.jpg");
+    background-image: none;
+    background-color: #f7ced4;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: absolute;
+  }
+
+  .currency-container {
+    width: 90vw;
+    height: 70vh;
   }
   .currency-box {
     display: inline-block;
@@ -179,5 +193,22 @@ body {
     align-items: center;
     justify-content: center;
     place-items: center;
+    margin: 8%;
+  }
+
+  .iconStyle2,
+  .iconStyle3 {
+    font-size: 140%;
+    width: 50%;
+    height: 200%;
+  }
+
+  .styleTitle{
+    font-size: 180%;
+  }
+
+  .selectStyle{
+font-size: 140%;
+color: #845ec2;
   }
 }
