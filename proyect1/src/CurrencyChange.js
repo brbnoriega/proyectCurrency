@@ -96,6 +96,14 @@ const CurrencyChange = () => {
   //   }
   // }
 
+  function handleSwitch(){
+
+    let keepCurr2 = curr2;
+    let keepCurr1 = curr1;
+    setCurr1(keepCurr2);
+    setCurr2(keepCurr1)
+  }
+
   function handelSelect1(e) {
     e.preventDefault();
     setCurr1(e.target.value);
@@ -163,7 +171,7 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="left" onChange={handelSelect1}>
+                    <select name="left" onChange={handelSelect1} value={curr1}>
                       {listData
                         ? Object.keys(listData)?.map((m) => (
                             <option key={m} value={m}>
@@ -182,7 +190,7 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="left" onChange={handelSelect1}>
+                    <select name="left" onChange={handelSelect1} value={curr1}>
                       {listData
                         ? Object.keys(listData)?.map((m) => (
                             <option key={m} value={m}>
@@ -196,7 +204,7 @@ const CurrencyChange = () => {
                 <div className="iconStyle1">
                   <button
                     className="iconStyle3"
-                    onClick={() => setCurrency(!currencyBox)}
+                    onClick={handleSwitch}
                   >
                     <TbExchange />
                   </button>{" "}
@@ -215,7 +223,7 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="right" onChange={handelSelect2}>
+                    <select name="right" onChange={handelSelect2} value={curr2}>
                       {listData
                         ? Object.keys(listData).map((m) => (
                             <option key={m} value={m}>
@@ -234,7 +242,7 @@ const CurrencyChange = () => {
                       className="maskStyle"
                     />
                     <br />
-                    <select name="right" onChange={handelSelect2}>
+                    <select name="right" onChange={handelSelect2} value={curr2}>
                       {listData
                         ? Object.keys(listData).map((m) => (
                             <option key={m} value={m}>
