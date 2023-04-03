@@ -80,17 +80,6 @@ const CurrencyChange = () => {
   return (
     <section>
       <div>
-        <article>
-          <div className="styleMe">
-            <div>
-              <h3>
-                <a href="https://www.noriegabarbara.com/" target="_blank">Barbara Noriega</a>
-              </h3>
-              <p>Currency Converter App</p>
-            </div>
-          </div>
-        </article>
-
         <div className="main">
           <div className="currency-container">
             <h4 className="styleTitle">Converter Calculator</h4>
